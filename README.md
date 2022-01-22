@@ -5,7 +5,7 @@
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Code Explanation](#code-explanation)
-  - [Index.js](#index.js)
+  - [Index js](#index-js)
   - [Index.html](#index.html)
   - [Singlephase.js](#singlephase.js)
   - [MainScene.js](#mainscene.js)
@@ -53,9 +53,9 @@ app.get('/', (req, res) => res.sendFile('index.html'));
 ```
 The Express application uses a callback function whose parameters are request and response objects.
 
-Request Object represents the HTTP request and has properties for the request query string,parameters,body,HTTP headers and so on.
-Response Object represents the HTTP response that an Express app sends when it gets an HTTP request.
-Printing req and res provides information such as cookies, sessions, URL,etc.
+Request Object represents the HTTP request and has properties for the request query string,parameters,body,HTTP headers and so on.  
+Response Object represents the HTTP response that an Express app sends when it gets an HTTP request.  
+Printing req and res provides information such as cookies, sessions, URL,etc.  
 ```
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
@@ -63,7 +63,7 @@ app.listen(port, () => {
 ```
 Binds and listens the connections on the Host and Port. 
 
-A JavaScript function, designed to be passed to Node’s HTTP servers as a callback to handle requests.
+A JavaScript function, designed to be passed to Node’s HTTP servers as a callback to handle requests.  
 Entire Code for index.js
 ```
 const express = require('express');
@@ -78,7 +78,8 @@ app.listen(port, () => {
 })
 ```
 ### Index.html
-Complete index.html code is as follows
+Create a public folder and create new html file named 'index'.
+Complete index.html code is as follows.
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +98,34 @@ Complete index.html code is as follows
 </html>
 ```
 ### Singlephase.js
-Complete singlephase.js file code is as follows
+Create a JS folder inside Public directory.  
+This basically is a canvas in which our game will be placed.
+
+```
+    width: 640,
+    height: 640,
+
+```
+Setting the game space width and height.
+```
+ type: Phaser.AUTO,
+```
+We set Phaser to decide automatically what type of game space to use.
+```
+parent: 'phaser-game',
+```
+This is where the game will be placed.It is the id we used under div tag in html file.
+```
+ scene: [MainScene]
+```
+This is where all our scenes will be added. It is an array, containing all scenes defined.  
+
+```
+new Phaser.Game(config);
+```
+We create new phaser game object and pass config to it.  
+
+Complete singlephase.js file code is as follows.
 ```
 import MainScene from "./MainScene.js";
 const config = {
