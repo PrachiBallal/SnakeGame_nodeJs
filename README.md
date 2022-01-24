@@ -78,8 +78,15 @@ app.listen(port, () => {
 })
 ```
 ### Index.html
-Create a public folder and create new html file named 'index'.
-Complete index.html code is as follows.
+
+Create a public folder and create new html file named 'index'.  
+
+```
+<script type="module" src= "js/singlephase.js"></script>
+```
+We specify the type as 'module' as the import declaration appears at the top level of a module.  
+
+Complete index.html code is as follows.  
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -118,7 +125,7 @@ This is where the game will be placed.It is the id we used under div tag in html
 ```
  scene: [MainScene]
 ```
-This is where all our scenes will be added. It is an array, containing all scenes defined.  
+This is where all our scenes will be added. It is an array, containing all scenes defined in MainScene class.  
 
 ```
 new Phaser.Game(config);
@@ -139,6 +146,35 @@ const config = {
 new Phaser.Game(config);
 ```
 ### MainScene.js
+Holds the snake game code  
+
+```
+export default class MainScene extends Phaser.Scene {
+```
+We create a class MainScene  
+
+```
+constructor() {
+        super('MainScene');
+    }
+```
+We create a constructor.    
+The super keyword is used to access and call functions on an object's parent, here 'MainScene'.  
+
+```
+create() {
+        this.snake = new Snake(this);
+    }
+```
+This is used at the beginning to initialise the scene.  
+
+```
+update(time){
+        this.snake.update(time);
+    }
+```
+This is used to update the scene from time to time.  
+
 Complete MainScene.js file code is as follows
 ```
 import Snake from './Snake.js';
